@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CodeTest Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f4f4;
+    }
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;  /* <-- Add this */
+        background: #000;
+        color: white;
+        padding: 15px 25px;
+        position: relative;
+      }
+      
+      .back-btn {
+        background-color: transparent;
+        font-family: 'Poppins', sans-serif;
+        border: none;
+        color: #00ff84;
+        font-size: 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+      }
+      
+      .back-btn i {
+        margin-right: 6px;
+        font-size: 1.2rem;
+      }
+      
+      .back-btn:hover {
+        text-decoration: underline;
+      }
+      
+    .header i {
+      cursor: pointer;
+      font-size: 20px;
+      color: white;
+    }
+    .header h2 {
+      margin: 0;
+      font-size: 18px;
+      color: white;
+    }
+    .timer {
+      font-weight: bold;
+      color: white;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .question-title {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #000;
+    }
+    textarea {
+      width: 100%;
+      height: 250px;
+      font-family: monospace;
+      font-size: 15px;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+    .nav-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    button {
+      background-color: #000;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background-color: #333;
+    }
+    .result {
+      text-align: center;
+      font-size: 22px;
+      margin-top: 30px;
+      color: #000;
+    }
+
+  </style>
+</head>
+<body>
+
+    <div class="header">
+        <button onclick="goHome()" class="back-btn">
+          <i class="fa-solid fa-arrow-left"></i> Back to Home
+        </button>
+        <div class="timer">Time Left: <span id="time">15:00</span></div>
+      </div>
+      
+  
+  <!-- Main Content -->
+  <div class="container">
+    <h2 id="question-title" class="question-title">Loading...</h2>
+    <textarea id="code-editor" placeholder="Write your code here..."></textarea>
+  
+    <div class="nav-buttons">
+      <button onclick="prevQuestion()">⬅ Previous</button>
+      <button onclick="nextQuestion()">Next ➡</button>
+      <button onclick="submitTest()">✅ Submit</button>
+    </div>
+
+    <div class="result" id="result-box" style="display:none;"></div>
+  </div>
+
+  <script>
+
+  const questions = [
+    { title: "1. Reverse a String", input: "'hello'", expectedOutput: "olleh" },
+    { title: "2. Sum of Array", input: "[1,2,3]", expectedOutput: "6" },
+    { title: "3. Factorial of a Number", input: "5", expectedOutput: "120" },
+    { title: "4. Is Palindrome", input: "'madam'", expectedOutput: "true" },
+    { title: "5. Max Subarray Sum", input: "[4,-1,2,1]", expectedOutput: "6" },
+    { title: "6. Count Vowels", input: "'education'", expectedOutput: "5" },
+    { title: "7. Fibonacci Number", input: "7", expectedOutput: "13" },
+    { title: "8. GCD of Two Numbers", input: "12, 18", expectedOutput: "6" },
+    { title: "9. Find Duplicates", input: "[1,2,3,2]", expectedOutput: "2" },
+    { title: "10. Longest Word in Sentence", input: "'The sky is blue'", expectedOutput: "blue" },
+    { title: "11. Power of Number", input: "2, 5", expectedOutput: "32" },
+    { title: "12. Is Prime", input: "29", expectedOutput: "true" },
+    { title: "13. Reverse Words", input: "'hello world'", expectedOutput: "world hello" },
+    { title: "14. Remove Duplicates in Array", input: "[1,2,2,3]", expectedOutput: "[1,2,3]" },
+    { title: "15. Check Armstrong Number", input: "153", expectedOutput: "true" },
+    { title: "16. Binary to Decimal", input: "'1011'", expectedOutput: "11" },
+    { title: "17. Count Digits", input: "123456", expectedOutput: "6" },
+    { title: "18. Second Largest Number", input: "[10,20,4,45,99]", expectedOutput: "45" },
+    { title: "19. Missing Number in Sequence", input: "[1,2,4,5]", expectedOutput: "3" },
+    { title: "20. Sum of Digits", input: "1234", expectedOutput: "10" }
+  ];
+
+  let currentQuestion = 0;
+  let answers = [];
+  let timeLeft = 900; // 15 minutes
+
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+  window.onload = () => {
+    shuffle(questions); // Shuffle questions on page load
+    showQuestion();
+    startTimer();
+  };
+
+  function showQuestion() {
+    const q = questions[currentQuestion];
+    document.getElementById("question-title").textContent = q.title;
+    document.getElementById("code-editor").value = answers[currentQuestion] || "";
+  }
+
+  function saveAnswer() {
+    answers[currentQuestion] = document.getElementById("code-editor").value;
+  }
+
+  function prevQuestion() {
+    saveAnswer();
+    if (currentQuestion > 0) {
+      currentQuestion--;
+      showQuestion();
+    }
+  }
+
+  function nextQuestion() {
+    saveAnswer();
+    if (currentQuestion < questions.length - 1) {
+      currentQuestion++;
+      showQuestion();
+    }
+  }
+
+  function startTimer() {
+    const timerDisplay = document.getElementById("time");
+    const interval = setInterval(() => {
+      if (timeLeft <= 0) {
+        clearInterval(interval);
+        submitTest();
+      }
+      let mins = Math.floor(timeLeft / 60);
+      let secs = timeLeft % 60;
+      timerDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      timeLeft--;
+    }, 1000);
+  }
+
+  function gradeAnswer(userCode, input, expectedOutput) {
+    try {
+      const wrapper = new Function(`return (${userCode})(${input});`);
+      const result = wrapper();
+      return String(result).trim() === expectedOutput.trim();
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function submitTest() {
+    saveAnswer();
+    let score = 0;
+    for (let i = 0; i < questions.length; i++) {
+      if (gradeAnswer(answers[i], questions[i].input, questions[i].expectedOutput)) {
+        score++;
+      }
+    }
+    document.getElementById("result-box").style.display = "block";
+    document.getElementById("result-box").innerHTML = `✅ You scored <strong>${score}/${questions.length}</strong>`;
+    document.querySelector(".nav-buttons").style.display = "none";
+  }
+
+  function goHome() {
+    window.location.href = "index.html";
+  }
+
+
+  </script>
+</body>
+</html>

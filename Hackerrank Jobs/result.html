@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Result | Frontend Certification</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: #f0f4f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .result-box {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+    }
+    .result-box h2 {
+      color: #1ba94c;
+      margin-bottom: 10px;
+    }
+    .score {
+      font-size: 24px;
+      margin: 20px 0;
+      font-weight: bold;
+    }
+    .certificate {
+      margin-top: 30px;
+      padding: 20px;
+      border: 2px dashed #1ba94c;
+      border-radius: 10px;
+      background: #f8fff9;
+    }
+    .certificate h3 {
+      margin-bottom: 10px;
+    }
+    .back-btn {
+      margin-top: 20px;
+      display: inline-block;
+      background: #1ba94c;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="result-box">
+    <h2>Congratulations!</h2>
+    <p class="score" id="score-display"></p>
+
+    <div class="certificate">
+      <h3>Frontend Certification</h3>
+      <p>This is to certify that you have successfully passed the Frontend Developer Certification Test with distinction.</p>
+      <p id="marks"></p>
+    </div>
+
+    <a href="certify.html" class="back-btn">Back to Certify Page</a>
+  </div>
+
+  <script>
+    const score = localStorage.getItem("frontendScore");
+    const total = localStorage.getItem("totalMcqs") || 30;
+    const scoreDisplay = document.getElementById("score-display");
+    const marks = document.getElementById("marks");
+
+    scoreDisplay.innerText = `Your Score: ${score} / ${total}`;
+
+    if(score >= 25){
+      marks.innerText = "Performance: Excellent (Certificate with Distinction)";
+    } else if(score >= 20){
+      marks.innerText = "Performance: Good (Certificate Achieved)";
+    } else {
+      marks.innerText = "Performance: Needs Improvement (Certificate Not Granted)";
+    }
+  </script>
+</body>
+</html>

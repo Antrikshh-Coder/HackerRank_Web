@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HackerRank</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background-color: #fff8f8;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+    .box {
+      margin-top: 5rem;
+      width: 100%;
+      max-width: 450px;
+      position: relative;
+    }
+    .box > h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-top: 10px;
+    }
+    .box > p {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .form__box {
+      margin-top: 2rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      overflow: hidden;
+      background: white;
+    }
+    .form__header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background-color: #f0eded;
+    }
+    .form__header > .tab {
+      text-align: center;
+      font-size: 1.2rem;
+      padding: 12px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .form__header > .tab:hover {
+      background-color: #eaeaea;
+    }
+    .form__body {
+      padding: 15px;
+    }
+    .signup_input {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin: 10px 0;
+      background-color: #fff;
+    }
+    .signup_input > i {
+      padding: 10px;
+      font-size: 1.1rem;
+      color: #555;
+    }
+    .signup_input > input {
+      font-size: 1rem;
+      padding: 10px;
+      border: none;
+      outline: none;
+      flex: 1;
+    }
+    .error {
+      border: 1px solid red !important;
+    }
+    .error-msg {
+      color: red;
+      font-size: 0.8rem;
+      margin-top: -8px;
+      margin-bottom: 5px;
+    }
+    .signup_input_checkbox {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      margin: 10px 0;
+    }
+    .signup_input_checkbox > span {
+      margin-left: 5px;
+    }
+    .form__submit {
+      display: flex;
+      justify-content: end;
+    }
+    .form__submit > button {
+      font-size: 1rem;
+      padding: 10px 20px;
+      background-color: #00751f;
+      color: white;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+    .form__submit > button:hover {
+      background-color: #005f18;
+    }
+    .form__dividor {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 15px 0;
+    }
+    .form__dividor > p {
+      margin: 0 10px;
+      font-size: 0.95rem;
+      color: #555;
+    }
+    .dividor__left, .dividor__right {
+      height: 1px;
+      width: 80px;
+      background-color: grey;
+    }
+    .form__logos {
+      display: flex;
+      justify-content: space-around;
+      padding: 4px;
+    }
+    .form__logos > img {
+      height: 40px;
+      cursor: pointer;
+    }
+    a {
+      text-decoration: none;
+      color: #097bbf;
+    }
+    .login_links {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      margin: 10px 0;
+    }
+    .back-btn {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background-color: transparent;
+      border: none;
+      color: #00751f;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+    .back-btn i {
+      margin-right: 6px;
+      font-size: 1.2rem;
+    }
+    .back-btn:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <button onclick="goHome()" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i> Back to Home
+      </button>
+
+      <h2>HackerRank Jobs</h2>
+      <p>Practice coding, prepare for interviews, and get hired.</p>
+
+      <div class="form__box">
+        <div class="form__header">
+          <div class="tab" id="signup_tab"><h4>Sign up</h4></div>
+          <div class="tab" id="login_tab"><h4>Log in</h4></div>
+        </div>
+
+        <div class="form__body">
+          <!-- Sign Up Form -->
+          <div id="signup">
+            <form id="signupForm">
+              <div class="signup_input">
+                <i class="fa-solid fa-user-plus"></i>
+                <input type="text" id="name" placeholder="First & Last name" required>
+              </div>
+              <p class="error-msg" id="nameError"></p>
+
+              <div class="signup_input">
+                <i class="fa-regular fa-envelope"></i>
+                <input type="email" id="email" placeholder="Email" required>
+              </div>
+              <p class="error-msg" id="emailError"></p>
+
+              <div class="signup_input">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="password" placeholder="Your password" required>
+              </div>
+              <p class="error-msg" id="passwordError"></p>
+
+              <div class="signup_input_checkbox">
+                <input type="checkbox" id="terms" required>
+                <span> I agree to HackerRank's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</span>
+              </div>
+
+              <div class="form__submit">
+                <button type="submit">Create An Account</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Login Form -->
+          <div id="login" style="display: none;">
+            <form id="loginForm">
+              <div class="signup_input">
+                <i class="fa-solid fa-user"></i>
+                <input type="email" id="loginEmail" placeholder="Your username or email" required>
+              </div>
+              <div class="signup_input">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="loginPassword" placeholder="Your password" required>
+              </div>
+              <div class="login_links">
+                <div class="signup_input_checkbox">
+                  <input type="checkbox">
+                  <span>Remember</span>
+                </div>
+                <div><a href="#">Forgot your password?</a></div>
+              </div>
+              <div class="form__submit">
+                <button type="submit">Login</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Divider -->
+          <div class="form__dividor">
+            <div class="dividor__left"></div>
+            <p>or connect with</p>
+            <div class="dividor__right"></div>
+          </div>
+
+          <!-- Social Logins -->
+          <div class="form__logos">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+            <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const signupTab = document.getElementById("signup_tab");
+    const loginTab = document.getElementById("login_tab");
+    const signup = document.getElementById("signup");
+    const login = document.getElementById("login");
+
+    signupTab.addEventListener("click", () => {
+      login.style.display = "none";
+      signup.style.display = "block";
+      signupTab.style.background = "#f9fbfb";
+      loginTab.style.background = "white";
+    });
+
+    loginTab.addEventListener("click", () => {
+      signup.style.display = "none";
+      login.style.display = "block";
+      loginTab.style.background = "#f9fbfb";
+      signupTab.style.background = "white";
+    });
+
+    function goHome() {
+      window.location.href = "index.html";
+    }
+
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Fields
+      const name = document.getElementById("name");
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+      const terms = document.getElementById("terms");
+
+      // Errors
+      let hasError = false;
+
+      if (name.value.trim().length < 3) {
+        name.classList.add("error");
+        document.getElementById("nameError").innerText = "Name must be at least 3 characters";
+        hasError = true;
+      } else {
+        name.classList.remove("error");
+        document.getElementById("nameError").innerText = "";
+      }
+
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!emailPattern.test(email.value.trim())) {
+        email.classList.add("error");
+        document.getElementById("emailError").innerText = "Enter valid email";
+        hasError = true;
+      } else {
+        email.classList.remove("error");
+        document.getElementById("emailError").innerText = "";
+      }
+
+      if (password.value.length < 6) {
+        password.classList.add("error");
+        document.getElementById("passwordError").innerText = "Password must be 6+ characters";
+        hasError = true;
+      } else {
+        password.classList.remove("error");
+        document.getElementById("passwordError").innerText = "";
+      }
+
+      if (!terms.checked) {
+        alert("You must agree to the terms.");
+        hasError = true;
+      }
+
+      if (!hasError) {
+        alert("Account created successfully! (Simulation)");
+        this.reset();
+      }
+    });
+
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+      if (email && password) {
+        alert("Login successful! (Simulation)");
+      } else {
+        alert("Please fill in both fields.");
+      }
+    });
+  </script>
+</body>
+</html>

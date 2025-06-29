@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DB Optimization Certification Test</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+    h2 {
+      color: #1ba94c;
+      margin-bottom: 10px;
+    }
+    .question-block {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .question-block h4 {
+      margin-bottom: 10px;
+    }
+    .question-block textarea, .question-block input[type="radio"] {
+      margin-top: 5px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      font-family: monospace;
+    }
+    button {
+      padding: 12px 20px;
+      background: #1ba94c;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #148d3a;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Database Design & Optimization Certification</h2>
+
+  <form id="testForm">
+
+    <!-- MCQs -->
+    <h3>Multiple Choice Questions (MCQs)</h3>
+
+    <div class="question-block">
+      <h4>1. What is database normalization?</h4>
+      <label><input type="radio" name="q1" value="a"> Organizing data to reduce redundancy</label><br>
+      <label><input type="radio" name="q1" value="b"> Creating indexes on data</label><br>
+      <label><input type="radio" name="q1" value="c"> Creating backups of a database</label><br>
+      <label><input type="radio" name="q1" value="d"> None of the above</label>
+    </div>
+
+    <div class="question-block">
+      <h4>2. What does a foreign key enforce?</h4>
+      <label><input type="radio" name="q2" value="a"> Uniqueness</label><br>
+      <label><input type="radio" name="q2" value="b"> Referential integrity</label><br>
+      <label><input type="radio" name="q2" value="c"> Index creation</label><br>
+      <label><input type="radio" name="q2" value="d"> None</label>
+    </div>
+
+    <div class="question-block">
+      <h4>3. Which normal form eliminates partial dependency?</h4>
+      <label><input type="radio" name="q3" value="a"> 1NF</label><br>
+      <label><input type="radio" name="q3" value="b"> 2NF</label><br>
+      <label><input type="radio" name="q3" value="c"> 3NF</label><br>
+      <label><input type="radio" name="q3" value="d"> BCNF</label>
+    </div>
+
+    <div class="question-block">
+      <h4>4. Indexing improves which of the following?</h4>
+      <label><input type="radio" name="q4" value="a"> Storage space</label><br>
+      <label><input type="radio" name="q4" value="b"> Query performance</label><br>
+      <label><input type="radio" name="q4" value="c"> Backup speed</label><br>
+      <label><input type="radio" name="q4" value="d"> None</label>
+    </div>
+
+    <div class="question-block">
+      <h4>5. What is a surrogate key?</h4>
+      <label><input type="radio" name="q5" value="a"> Natural key</label><br>
+      <label><input type="radio" name="q5" value="b"> Artificial key</label><br>
+      <label><input type="radio" name="q5" value="c"> Composite key</label><br>
+      <label><input type="radio" name="q5" value="d"> Candidate key</label>
+    </div>
+
+    <div class="question-block">
+      <h4>6. What is the purpose of a query execution plan?</h4>
+      <label><input type="radio" name="q6" value="a"> Create tables</label><br>
+      <label><input type="radio" name="q6" value="b"> Optimize query performance</label><br>
+      <label><input type="radio" name="q6" value="c"> Backup data</label><br>
+      <label><input type="radio" name="q6" value="d"> Drop constraints</label>
+    </div>
+
+    <div class="question-block">
+      <h4>7. Which SQL clause is used for grouping records?</h4>
+      <label><input type="radio" name="q7" value="a"> GROUP BY</label><br>
+      <label><input type="radio" name="q7" value="b"> ORDER BY</label><br>
+      <label><input type="radio" name="q7" value="c"> WHERE</label><br>
+      <label><input type="radio" name="q7" value="d"> HAVING</label>
+    </div>
+
+    <div class="question-block">
+      <h4>8. Which is best for fast data retrieval?</h4>
+      <label><input type="radio" name="q8" value="a"> Triggers</label><br>
+      <label><input type="radio" name="q8" value="b"> Index</label><br>
+      <label><input type="radio" name="q8" value="c"> Constraints</label><br>
+      <label><input type="radio" name="q8" value="d"> Views</label>
+    </div>
+
+    <div class="question-block">
+      <h4>9. What is denormalization?</h4>
+      <label><input type="radio" name="q9" value="a"> Breaking down tables</label><br>
+      <label><input type="radio" name="q9" value="b"> Reducing joins by adding redundancy</label><br>
+      <label><input type="radio" name="q9" value="c"> Creating stored procedures</label><br>
+      <label><input type="radio" name="q9" value="d"> None</label>
+    </div>
+
+    <div class="question-block">
+      <h4>10. What is a star schema used for?</h4>
+      <label><input type="radio" name="q10" value="a"> Normalization</label><br>
+      <label><input type="radio" name="q10" value="b"> Transactional processing</label><br>
+      <label><input type="radio" name="q10" value="c"> Data warehousing</label><br>
+      <label><input type="radio" name="q10" value="d"> Security</label>
+    </div>
+
+    <!-- CODING QUESTIONS -->
+    <h3>Coding Questions</h3>
+
+    <div id="coding-section">
+      <!-- 15 coding questions -->
+      <script>
+        const codingSection = document.getElementById('coding-section');
+        for (let i = 1; i <= 15; i++) {
+          const div = document.createElement('div');
+          div.className = 'question-block';
+          div.innerHTML = `
+            <h4>Q${i}: Write SQL query for this requirement:</h4>
+            <textarea name="code${i}" required></textarea>
+          `;
+          codingSection.appendChild(div);
+        }
+      </script>
+    </div>
+
+    <button type="submit">Submit Test</button>
+  </form>
+
+  <script>
+    document.getElementById("testForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // Validate all 10 MCQs
+      for (let i = 1; i <= 10; i++) {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (!selected) {
+          alert("Please answer all MCQ questions before submitting.");
+          return;
+        }
+      }
+
+      // Validate all 15 coding answers
+      for (let i = 1; i <= 15; i++) {
+        const code = document.querySelector(`textarea[name="code${i}"]`);
+        if (!code.value.trim()) {
+          alert("Please answer all coding questions before submitting.");
+          return;
+        }
+      }
+
+      // If everything is filled
+      alert("All questions submitted successfully!");
+      window.location.href = "result.html"; // your result page
+    });
+  </script>
+
+</body>
+</html>

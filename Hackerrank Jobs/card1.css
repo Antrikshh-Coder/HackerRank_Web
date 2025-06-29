@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .logo span {
+    color: rgb(12, 239, 0);
+    margin-left: 5px;
+  }
+  
+  body {
+    background-color: #fff;
+    color: #111;
+  }
+  
+  header {
+    background-color: #0c0c0c;
+    padding: 12px 24px;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .left {
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  nav a {
+    color: #ccc;
+    text-decoration: none;
+    margin-left: 16px;
+    font-size: 14px;
+  }
+  
+  nav a.active {
+    color: #fff;
+    border-bottom: 2px solid #2ebd59;
+  }
+  
+  .right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .right input {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 12px;
+  }
+  
+  .circle {
+    width: 32px;
+    height: 32px;
+    background-color: #444;
+    border-radius: 50%;
+    margin-left: 8px;
+  }
+  
+  .profile {
+    background-color: #2ebd59;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 40px auto;
+    gap: 40px;
+  }
+  
+  .left-section {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .right-section {
+    flex: 1;
+    min-width: 320px;
+    background-color: #f8f8f8;
+    padding: 24px;
+    border-radius: 12px;
+  }
+  
+  .back-link {
+    display: inline-block;
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 20px;
+  }
+  
+  .job-logo {
+    height: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .job-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .company-name,
+  .location {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .buttons {
+    margin: 20px 0;
+  }
+  
+  .apply-btn {
+    background-color: #2ebd59;
+    color: white;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 6px;
+    margin-right: 12px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  .wishlist-btn {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .resume-check {
+    margin-top: 40px;
+  }
+  
+  .resume-check h2 {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+  
+  .resume-check p {
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 10px;
+  }
+  
+  .resume-buttons button {
+    background-color: #2ebd59;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .right-section h3,
+  .right-section h4,
+  .right-section h5 {
+    margin: 18px 0 10px;
+    font-weight: 600;
+  }
+  
+  .right-section ul {
+    margin-left: 20px;
+    list-style: disc;
+    line-height: 1.6;
+  }
+  
+  .right-section p {
+    margin: 8px 0;
+    font-size: 14px;
+  }
+  
